@@ -29,6 +29,7 @@ async def parse_priceplans():
             for date in data:
                 typed_date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
 
+                # Create every price plan in same date
                 for priceplan in data[date]:
                     await PricePlan.get_or_create(
                         active_date=typed_date,
@@ -45,7 +46,11 @@ async def get_insurance_cost(date: str, cargo_type: str):
     """
     Evaluate insurance cost by date and cargo type.
     """
-    typed_date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+    # Check if date is valid
+    try:
+        typed_date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+    except Exception as e:
+        return {'insurance_cost': -1, 'error': str(e)}
 
     # Getting more closer priceplan by date
     filtered_priceplans = await PricePlan.filter(
