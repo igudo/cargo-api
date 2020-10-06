@@ -1,7 +1,7 @@
 # Cargo API
 REST API service for calculating the cost of insurance depending on the type of cargo and the declared rate
 
-# Requirements
+## Requirements
 <div class="termy">
 
 ```console
@@ -11,7 +11,7 @@ docker-compose
 </div>
 
 
-# Run it
+## Run it
 Development:
 
 <div class="termy">
