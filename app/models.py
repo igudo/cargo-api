@@ -10,6 +10,6 @@ class PricePlan(models.Model):
     id = fields.IntField(pk=True)
     cargo_type = fields.CharField(max_length=30, default="misc")
     rate = fields.FloatField()
-    active_date = fields.DatetimeField()
+    active_date = fields.DateField()
 
 PricePlan_Pydantic = pydantic_model_creator(PricePlan, name="PricePlan")
