@@ -12,8 +12,4 @@ class PricePlan(models.Model):
     rate = fields.FloatField()
     active_date = fields.DatetimeField()
 
-
-    class PydanticMeta:
-        computed = ["id"]
-
-PricePlan_Pydantic = pydantic_model_creator(Users, name="User")
+PricePlan_Pydantic = pydantic_model_creator(PricePlan, name="PricePlan")
